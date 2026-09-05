@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>between here and there.</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- loading -->
+<div id="loading-screen">
+  <div class="lline"></div>
+  <p id="loading-text">assembling the evidence</p>
+</div>
+
+<div class="grain"></div>
+<div class="vignette"></div>
+<div id="cursor"></div>
+<div id="progress"></div>
+<div id="secret-counter"></div>
+<div id="toast" class="toast"></div>
+
+<!-- ============ NAV ============ -->
+<nav id="nav" class="hidden">
+  <button class="monogram" id="home-btn" aria-label="Return to top">us</button>
+  <button class="menu-btn" id="menu-btn" aria-label="Open archive"><span class="dot"></span>menu</button>
+</nav>
+
+<div id="panel">
+  <button class="panel-close" id="panel-close">close</button>
+  <div class="panel-inner">
+    <ul class="panel-list" id="panel-list"></ul>
+    <p class="panel-meta" id="panel-meta"></p>
+  </div>
+</div>
+
+<!-- ============ OPENING SEQUENCE ============ -->
+<div id="opening">
+  <div class="opening-stage active" data-stage="0">
+    <p id="opening-begin-label">something I made for you.</p>
+    <p id="opening-hint">headphones recommended.</p>
+    <button class="begin-btn" id="begin-btn">begin</button>
+  </div>
+
+  <div class="opening-stage" data-stage="1">
+    <p class="stage-line" id="stage-here-a">YOU ARE HERE.</p>
+    <p class="stage-line" id="stage-here-b">I AM HERE.</p>
+  </div>
+
+  <div class="opening-stage" data-stage="2">
+    <div id="opening-map">
+      <svg viewBox="0 0 500 220" preserveAspectRatio="xMidYMid meet">
+        <circle class="dot-a" cx="90" cy="70" r="4"></circle>
+        <circle class="dot-b" cx="410" cy="140" r="4"></circle>
+        <path class="map-line-draw" id="opening-line" d="M90,70 Q250,20 410,140"></path>
+      </svg>
+    </div>
+  </div>
+
+  <div class="opening-stage" data-stage="3">
+    <p class="stage-line small" id="opening-text"></p>
+  </div>
+
+  <div class="opening-stage" data-stage="4">
+    <button class="enter-btn" id="enter-btn">enter</button>
+  </div>
+</div>
+
+<!-- ============ MAIN EXPERIENCE ============ -->
+<main id="main">
+
+  <!-- CHAPTER 01 — THE DISTANCE -->
+  <section class="chapter" id="ch-distance" data-chapter="the distance">
+    <div class="chapter-inner reveal">
+      <div class="chapter-label eyebrow">chapter one</div>
+      <h2 class="serif-lg chapter-title">the distance.</h2>
+      <div class="map-wrap">
+        <svg id="world-map" viewBox="0 0 900 450" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+      <div class="stat-row" id="distance-stats"></div>
+    </div>
+  </section>
+
+  <div class="spacer-quiet reveal"><p>different countries. different time zones. different lives.</p></div>
+
+  <!-- CHAPTER 02 — HOW WE GOT HERE -->
+  <section class="chapter" id="ch-timeline" data-chapter="how we got here">
+    <div class="chapter-inner reveal">
+      <div class="chapter-label eyebrow">chapter two</div>
+      <h2 class="serif-lg chapter-title">how we got here.</h2>
+      <div class="timeline-scroll" id="timeline-list"></div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 03 — NOT PHOTOGRAPHS -->
+  <section class="chapter" id="ch-artifacts" data-chapter="the things that aren't photographs">
+    <div class="chapter-inner reveal">
+      <div class="chapter-label eyebrow">chapter three</div>
+      <h2 class="serif-lg chapter-title">we don't have photographs together.<br><em style="font-style:italic; color:var(--grey); font-size:0.55em;">so I kept something else.</em></h2>
+      <div class="grid" id="artifact-grid"></div>
+    </div>
+  </section>
+
+  <div class="spacer-quiet reveal"><p>some things are better heard.</p></div>
+
+  <!-- CHAPTER 04 — SOUND OF US -->
+  <section class="chapter" id="ch-sound" data-chapter="the sound of us">
+    <div class="chapter-inner reveal">
+      <div class="chapter-label eyebrow">chapter four</div>
+      <h2 class="serif-lg chapter-title">the sound of us.</h2>
+      <div class="sound-tabs" id="sound-tabs"></div>
+      <div class="sound-list" id="sound-list"></div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 05 — THINGS I KNOW ABOUT YOU -->
+  <section class="chapter" id="ch-knowledge" data-chapter="things I know about you">
+    <div class="chapter-inner reveal">
+      <div class="chapter-label eyebrow">chapter five</div>
+      <h2 class="serif-lg chapter-title">things I know about you.</h2>
+      <div class="grid" id="knowledge-grid"></div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 06 — THINGS YOU DON'T KNOW -->
+  <section class="chapter" id="ch-sealed" data-chapter="things you don't know about me">
+    <div class="chapter-inner reveal">
+      <div class="chapter-label eyebrow">chapter six</div>
+      <h2 class="serif-lg chapter-title">a few things I never told you.</h2>
+      <div class="grid" id="sealed-grid"></div>
+    </div>
+  </section>
+
+  <div class="spacer-quiet reveal"><p>&nbsp;</p></div>
+
+  <!-- CHAPTER 07 — OPEN WHEN -->
+  <section class="chapter" id="ch-openwhen" data-chapter="open when">
+    <div class="chapter-inner reveal">
+      <div class="chapter-label eyebrow">chapter seven</div>
+      <h2 class="serif-lg chapter-title">open when.</h2>
+      <div class="envelope-grid" id="envelope-grid"></div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 08 — PRIVATE LANGUAGE -->
+  <section class="chapter" id="ch-language" data-chapter="our private language">
+    <div class="chapter-inner narrow reveal">
+      <div class="chapter-label eyebrow">chapter eight</div>
+      <h2 class="serif-lg chapter-title">our private language.</h2>
+      <div id="dict-list"></div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 09 — LITTLE THINGS -->
+  <section class="chapter" id="ch-little" data-chapter="the little things">
+    <div class="chapter-inner reveal">
+      <div class="chapter-label eyebrow">chapter nine</div>
+      <h2 class="serif-lg chapter-title">the little things.</h2>
+      <div class="wall" id="wall"></div>
+    </div>
+  </section>
+
+  <div class="spacer-quiet reveal"><p>imagine this.</p></div>
+
+  <!-- CHAPTER 10 — IF YOU WERE HERE -->
+  <section class="chapter" id="ch-ifhere" data-chapter="if you were here">
+    <div class="chapter-inner narrow reveal">
+      <div class="chapter-label eyebrow">chapter ten</div>
+      <h2 class="serif-lg chapter-title">if you were here.</h2>
+      <div class="scenario-btns" id="scenario-btns"></div>
+      <p class="scenario-text" id="scenario-text"></p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 11 — THE FUTURE -->
+  <section class="chapter" id="ch-future" data-chapter="the future">
+    <div class="chapter-inner narrow reveal">
+      <div class="chapter-label eyebrow">chapter eleven</div>
+      <h2 class="serif-lg chapter-title">things we haven't done yet.</h2>
+      <div class="checklist" id="future-checklist"></div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 12 — FIRST PHOTOGRAPH -->
+  <section class="chapter" id="ch-photo" data-chapter="the first photograph">
+    <div class="chapter-inner reveal">
+      <div class="chapter-label eyebrow">chapter twelve</div>
+      <h2 class="serif-lg chapter-title center">the first photograph.</h2>
+      <div class="frame-wrap">
+        <div class="photo-frame" id="photo-frame">
+          <div class="frame-text" id="frame-text"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 13 — FIRST MEETING -->
+  <section class="chapter" id="ch-meeting" data-chapter="the first meeting">
+    <div class="chapter-inner narrow reveal">
+      <div class="chapter-label eyebrow">chapter thirteen</div>
+      <h2 class="serif-lg chapter-title">imagine this.</h2>
+      <p id="meet-scene" class="muted" style="font-size:15px;"></p>
+      <div class="meet-btns" id="meet-btns"></div>
+      <p class="meet-reveal" id="meet-reveal"></p>
+      <div id="meet-distance-wrap" style="display:none;">
+        <div class="eyebrow center mt-40">the distance</div>
+        <div class="meet-distance" id="meet-distance">—</div>
+        <p class="center serif-lg" style="font-size:2rem;" id="meet-final"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- extras: today / generator / capsules / quiz -->
+  <section class="chapter" id="ch-extras" data-chapter="today">
+    <div class="chapter-inner narrow reveal">
+      <div class="chapter-label eyebrow">also, always</div>
+      <h2 class="serif-lg chapter-title">today.</h2>
+      <div class="util-box" id="daily-box"></div>
+
+      <h3 style="font-family:var(--serif); font-size:1.6rem; margin: 50px 0 16px;">give us something to do.</h3>
+      <div class="util-box">
+        <p class="prompt-box" id="prompt-box">tap the button for something to do together, right now.</p>
+        <button class="small-btn mt-24" id="prompt-btn">generate</button>
+      </div>
+
+      <h3 style="font-family:var(--serif); font-size:1.6rem; margin: 50px 0 16px;">how well do you know me.</h3>
+      <div class="util-box" id="quiz-box"></div>
+
+      <h3 style="font-family:var(--serif); font-size:1.6rem; margin: 50px 0 16px;">messages for future us.</h3>
+      <div id="capsule-list"></div>
+    </div>
+  </section>
+
+  <!-- LETTER -->
+  <section class="chapter" id="ch-letter" data-chapter="the letter">
+    <div id="letter-gate">
+      <p class="stage-line small">there's one last thing.</p>
+      <div class="envelope-seal" id="letter-envelope" role="button" tabindex="0" aria-label="Open the letter"></div>
+      <p class="muted" style="font-size:12px; letter-spacing:0.1em;">click to open</p>
+    </div>
+    <div id="letter-full">
+      <div class="letter-page">
+        <div class="letter-date" id="letter-date"></div>
+        <h2 class="letter-title" id="letter-title"></h2>
+        <div class="letter-body" id="letter-body"></div>
+        <div class="letter-sig" id="letter-sig"></div>
+        <p class="letter-final" id="letter-final"></p>
+        <button class="small-btn mt-40" id="letter-continue">continue</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL VOICE NOTE -->
+  <section class="chapter" id="ch-final-voice" data-chapter="the final voice note" style="display:none;">
+    <div class="black-screen">
+      <p class="closing-line show" id="fv-line1">you can stop here.</p>
+      <p class="closing-line" id="fv-line2">unless you want to hear one last thing.</p>
+      <button class="play-circle" id="fv-play" aria-label="Play final voice note" style="opacity:0;">
+        <svg width="16" height="16" viewBox="0 0 16 16"><polygon points="3,1 15,8 3,15" fill="#F2EDE3"/></svg>
+      </button>
+      <div class="waveform" id="fv-waveform" style="display:none;">
+        <span style="height:6px"></span><span style="height:14px"></span><span style="height:9px"></span><span style="height:18px"></span><span style="height:7px"></span><span style="height:15px"></span><span style="height:5px"></span>
+      </div>
+      <p class="closing-line" id="fv-final">until then.</p>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="chapter" id="ch-closing" data-chapter="closing" style="display:none;">
+    <div class="black-screen">
+      <div id="closing-map">
+        <svg viewBox="0 0 500 160" width="320" height="110">
+          <circle id="closing-dot-a" class="dot-a" cx="70" cy="80" r="4"></circle>
+          <circle id="closing-dot-b" class="dot-b" cx="430" cy="80" r="4"></circle>
+          <line id="closing-line" x1="70" y1="80" x2="430" y2="80" stroke="#5B1F2A" stroke-width="1"></line>
+        </svg>
+      </div>
+      <p class="closing-line show" style="margin-top:10px;">still a little distance to go.</p>
+      <p class="closing-line show">but we're getting there.</p>
+      <button class="begin-btn" id="close-btn">close</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- generic modal -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<audio id="ambient-audio" loop preload="none"></audio>
+<audio id="fx-audio" preload="none"></audio>
+
+<script src="content.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
